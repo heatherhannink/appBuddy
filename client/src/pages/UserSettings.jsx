@@ -67,7 +67,7 @@ function UserSettings(props) {
         }}
         
       ></button>
-    <Box ml={4}> Add margin to separate the image and text
+    <Box>
       <p>{username}</p>
       <p>Buddy since {createdAt}</p>
     </Box>
