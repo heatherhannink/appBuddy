@@ -4,6 +4,7 @@ import "../UserSettings.css"
 import Navbar from '../components/Navbar'
 import Auth from '../utils/auth'
 import { useEffect, useState } from 'react';
+// import dayjs from 'dayjs';
 
 function saveChanges(event) {
   event.preventDefault();
@@ -17,6 +18,9 @@ function UserSettings(props) {
     (async () => {
       const token = Auth.getToken()
       const id = Auth.getProfile().data._id
+
+
+      
       const createdAt = Auth.getProfile().data.createdAt
       const result = await fetch(`http://localhost:3636/api/users/${id}`,
       
@@ -33,30 +37,42 @@ function UserSettings(props) {
     })()
   }, [])
 
-
-
-
-  
   return (
     <>
       <Navbar />
 
-      {/* <Image src='./images/logo.rectangle.png' alt='logo' class='logo' /> */}
+      <Image src='./images/logo.rectangle.png' alt='logo' class='logo' />
 
       {/* image to load for class presentation */}
-      <Image src='./images/logo.png' alt='logo' class='logo' />
+      {/* <Image src='./images/green.png' alt='logo' class='logo' /> */}
 
-      <Container maxWidth="100vw" mx='-2rem' width="calc(100% + 4rem)" bg='#017354' centerContent>
-        <Box padding='25' bg='#5d9363' color='black' maxW='md'>
-          <Image
-            borderRadius="full"
-            boxSize='100px'
-            src='./images/profile.png'
-            alt='username photo' />
-          <p>{username}</p>
-          <p>Member since {createdAt}</p>
-        </Box>
-      </Container>
+
+<Container maxWidth="100vw" mx='-2rem' width="calc(100% + 4rem)" bg='#017354' centerContent>
+  <Box padding='25' bg='#5d9363' color='black' maxW='md' display='flex' alignItems='center'>
+    <Image
+      borderRadius="full"
+      boxSize='100px'
+      src='./images/profile.png'
+      alt='username photo'
+    />
+    <button
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          borderRadius: '50%',
+          padding: '5px',
+          cursor: 'pointer',
+        }}
+        
+      ></button>
+    <Box ml={4}> Add margin to separate the image and text
+      <p>{username}</p>
+      <p>Buddy since {createdAt}</p>
+    </Box>
+  </Box>
+</Container>
 
       <h2 style={{ fontSize: '1.8rem', textShadow: '2px 2px 0 #000', color: '#e4d78a' }}>Privacy Settings</h2>
 
